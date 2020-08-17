@@ -8,6 +8,11 @@ public class EagerSingleton {
     }
 
     public synchronized EagerSingleton getInstance() {
-        return instance ? instance : new EagerSingleton();
+        if (!instance) {
+            instance = new EagerSingleton();
+            return instance;
+        }
+
+        return instance;
     }
 }
